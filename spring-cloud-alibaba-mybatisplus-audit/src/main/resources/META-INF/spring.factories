@@ -1,0 +1,6 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.springcloud.alibaba.MybatisPlusAuditAutoConfiguration,\
+com.springcloud.alibaba.MybatisPlusAuditInterceptor,\
+com.springcloud.alibaba.service.impl.mybatisPlusDefaultUserServiceImpl,\
+com.springcloud.alibaba.service.impl.MybatisPlusDefaultAuditorServiceImpl
+  

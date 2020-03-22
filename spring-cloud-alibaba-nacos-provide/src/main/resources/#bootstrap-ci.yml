@@ -1,0 +1,14 @@
+env:
+  info: ci
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:postgresql://192.168.189.131:5432/postgres?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: postgres
+    password: 123456
+

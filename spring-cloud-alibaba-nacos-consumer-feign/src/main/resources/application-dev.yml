@@ -1,0 +1,74 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: nacos-consumer-feign
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy/MM/dd HH:mm:ss
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:postgresql://192.168.189.131:5432/postgres?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: postgres
+    password: 123456
+    druid:
+      driverClassName: org.postgresql.Driver
+      initialSize: 3
+      minIdle: 1
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunMillis: 60000
+      minEvictableIdleTimeMillis: 1800000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 100
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
+    schemas: public
+    out-of-order: true
+    encoding: UTF-8
+    baseline-on-migrate: true
+    validate-on-migrate: false
+    ignore-missing-migrations: true
+
+management:
+  server:
+    port: 9900
+  endpoints:
+    web:
+      base-path: /monitor
+      exposure:
+        include: "*"
+
+feign:
+  sentinel:
+    enabled: true
+
+logging:
+  level:
+    root: info
+    java.sql: debug
+    org.springframework.web: trace
+    org.mybatis: debug
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    cache-enabled: true
+    lazy-loading-enabled: false
+    aggressive-lazy-loading: true
+    multiple-result-sets-enabled: true
+    use-generated-key: true
+    auto-mapping-behavior: PARTIAL
+    default-executor-type: SIMPLE
+    map-underscore-to-camel-case: true
+    loca-cache-scope: SESSION
+    jdbc-type-for-null: NULL
+    log-prefix: mybatis_sql.
+
+
