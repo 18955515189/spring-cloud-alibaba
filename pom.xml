@@ -9,6 +9,9 @@
         <module>spring-cloud-alibaba-dependencies</module>
         <module>spring-cloud-alibaba-gateway</module>
         <module>spring-cloud-alibaba-mybatisplus-audit</module>
+        <module>spring-cloud-alibaba-nacos-consumer-feign-B</module>
+        <module>spring-cloud-alibaba-nacos-consumer-feign-A</module>
+        <module>spring-cloud-alibaba-seata-server</module>
     </modules>
 
 

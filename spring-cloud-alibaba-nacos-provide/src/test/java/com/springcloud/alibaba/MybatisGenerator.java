@@ -28,8 +28,8 @@ public class MybatisGenerator {
     public static void main(String[] args) {
         MybatisGenerator g = new MybatisGenerator();
         boolean startWithI = false;
-        String packageName = "book";
-        String tableName = "book";
+        String packageName = "author";
+        String tableName = "author";
         String tableFix = "";
         g.generateByTables(startWithI, packageName,tableFix, tableName);
 

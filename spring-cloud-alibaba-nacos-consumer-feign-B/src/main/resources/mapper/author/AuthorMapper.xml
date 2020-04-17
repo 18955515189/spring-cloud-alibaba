@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springcloud.alibaba.author.mapper.AuthorMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.springcloud.alibaba.author.entity.Author">
+        <id column="id" property="id" />
+        <result column="first_name" property="firstName" />
+        <result column="last_name" property="lastName" />
+        <result column="date_of_birth" property="dateOfBirth" />
+        <result column="year_of_birth" property="yearOfBirth" />
+        <result column="distinguished" property="distinguished" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, first_name, last_name, date_of_birth, year_of_birth, distinguished
+    </sql>
+
+</mapper>

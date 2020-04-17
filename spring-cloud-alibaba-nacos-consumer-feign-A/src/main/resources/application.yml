@@ -1,0 +1,38 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: nacos-consumer-feign-A
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    alibaba:
+      seata:
+        tx-service-group: nacos-consumer-feign-A
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+feign:
+  sentinel:
+    enabled: true
+
+
+logging:
+  level:
+    root: info
+    java.sql: debug
+    org.springframework.web: trace
+    org.mybatis: debug
+
+seata:
+  enabled: true
+  service:
+    vgroup-mapping:
+      nacos-consumer-feign-A: default
+    grouplist:
+      default: 127.0.0.1:8091
+    disable-global-transaction: false
