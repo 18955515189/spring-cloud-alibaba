@@ -9,29 +9,38 @@ spring:
         server-addr: localhost:8848
     alibaba:
       seata:
-        tx-service-group: nacos-consumer-feign-B
+        tx-service-group: my_test_tx_group
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-feign:
-  sentinel:
-    enabled: true
-
-logging:
-  level:
-    root: info
-    java.sql: debug
-    org.springframework.web: trace
-    org.mybatis: debug
 
 seata:
   enabled: true
+  application-id: nacos-consumer-feign-B
+  enable-auto-data-source-proxy: true
+  use-jdk-proxy: false
   service:
-    vgroup-mapping:
-      nacos-consumer-feign-B: default
+    vgroup-mapping: default
     grouplist:
       default: 127.0.0.1:8091
+    enable-degrade: false
     disable-global-transaction: false
+  config:
+    type: file
+    nacos:
+      namespace:
+      serverAddr: localhost
+      group: SEATA_GROUP
+  registry:
+    type: nacos
+    nacos:
+      cluster: default
+      server-addr: localhost:8848
+      namespace:
+feign:
+  sentinel:
+    enabled: true
+  client:
+    config:
+      nacos-consumer-feign-A:
+        connectTimeout: 50000
+        readTimeout: 50000
+

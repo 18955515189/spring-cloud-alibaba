@@ -1,12 +1,9 @@
 package com.springcloud.alibaba.book.controller;
 
 import com.springcloud.alibaba.book.service.BookService;
-import com.springcloud.alibaba.feignclient.ComsumerBFeignClient;
-import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 
 /**
  * <p>
@@ -25,15 +22,20 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @Resource
-    private ComsumerBFeignClient comsumerBFeignClient;
+    @GetMapping("/getA")
+    public String getA(){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "getA";
+    }
 
     @GetMapping("/add/{id}")
-    @GlobalTransactional(timeoutMills = 300000, name = "ComsumerAFeignClient")
     public String addBook(@PathVariable("id") String id) throws InterruptedException {
 
         bookService.addBookById(id);
-        comsumerBFeignClient.addAuthor(id);
         Thread.sleep(10000);
         if(id.equals("21")){
             throw new RuntimeException("21啦");
@@ -45,6 +47,14 @@ public class BookController {
     public String addFromAuthor(@PathVariable("id") String id){
 
         bookService.addBookById(id);
+
+        return SUCCESS_CODE;
+    }
+
+    @GetMapping("/addFromAuthor2/{id}")
+    public String addFromAuthor2(@PathVariable("id") String id){
+        Integer realID = Integer.parseInt(id)+1;
+        bookService.addBookById(realID+"");
 
         return SUCCESS_CODE;
     }

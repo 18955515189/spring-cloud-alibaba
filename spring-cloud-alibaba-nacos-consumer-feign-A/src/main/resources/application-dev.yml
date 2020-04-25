@@ -7,23 +7,13 @@ spring:
     date-format: yyyy/MM/dd HH:mm:ss
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:postgresql://192.168.189.131:5432/postgres?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-    username: postgres
+    #driver-class-name: org.postgresql.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     password: 123456
-    druid:
-      driverClassName: org.postgresql.Driver
-      initialSize: 3
-      minIdle: 1
-      maxActive: 20
-      maxWait: 60000
-      timeBetweenEvictionRunMillis: 60000
-      minEvictableIdleTimeMillis: 1800000
-      validationQuery: SELECT 1
-      testWhileIdle: true
-      testOnBorrow: false
-      testOnReturn: false
-      poolPreparedStatements: true
-      maxPoolPreparedStatementPerConnectionSize: 100
+    username: root
+    #url: jdbc:postgresql://192.168.189.131:5432/postgres?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    url: jdbc:mysql://192.168.189.131:3306/seata?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+
 
 mybatis-plus:
   configuration:
@@ -39,5 +29,13 @@ mybatis-plus:
     loca-cache-scope: SESSION
     jdbc-type-for-null: NULL
     log-prefix: mybatis_sql.
+
+
+ribbon:
+  okhttp:
+    enabled: true
+feign:
+  httpclient:
+    connection-timeout: 100
 
 

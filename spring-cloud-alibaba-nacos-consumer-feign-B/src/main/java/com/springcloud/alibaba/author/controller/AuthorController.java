@@ -31,6 +31,11 @@ public class AuthorController {
     @Resource
     private ComsumerAFeignClient comsumerAFeignClient;
 
+    @GetMapping("/getA")
+    public String getA(){
+        return comsumerAFeignClient.getA();
+    }
+
     @GetMapping("/add/{id}")
     public String addAuthor(@PathVariable("id") String id){
         authorService.saveFromId(id);
@@ -38,10 +43,8 @@ public class AuthorController {
     }
 
     @GetMapping("/addAll/{id}")
-    @GlobalTransactional(timeoutMills = 300000, name = "ComsumerBFeignClient")
     public String addAll(@PathVariable("id") String id){
         authorService.saveFromId(id);
-        comsumerAFeignClient.addFromAuthor(id);
         return SUCCESS_CODE;
     }
 

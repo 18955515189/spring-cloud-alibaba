@@ -1,7 +1,9 @@
 package com.springcloud.alibaba;
 
+import io.seata.spring.annotation.datasource.EnableAutoDataSourceProxy;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
@@ -11,9 +13,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @description TODO
  * @since 2020/4/16 0016 14:06
  **/
-@SpringBootApplication
+@SpringBootApplication( exclude = DataSourceAutoConfiguration.class)
 @EnableDiscoveryClient
 @EnableFeignClients
+@EnableAutoDataSourceProxy
 public class BConsumeraApplication {
 
     public static void main(String[] args){
