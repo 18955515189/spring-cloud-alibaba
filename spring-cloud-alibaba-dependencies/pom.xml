@@ -33,7 +33,7 @@
         <!-- pagehelper 分页插件版本 -->
         <pagehelper.version>1.2.3</pagehelper.version>
         <!-- swagger 版本 -->
-        <swagger.version>2.9.2</swagger.version>
+        <swagger.version>2.10.0</swagger.version>
 
     </properties>
 
